@@ -1,0 +1,9 @@
+# ads.txt file for DivisionCalculator.sbs
+# Google AdSense
+# Replace pub-0000000000000000 with your actual AdSense publisher ID
+
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Additional ad networks can be added here
+# Format: domain, publisher_id, relationship, certification_id
+
