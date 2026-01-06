@@ -1,0 +1,14 @@
+/* TEAM */
+Developer: DivisionCalculator Team
+Site: https://divisioncalculator.sbs
+Location: Global
+
+/* THANKS */
+Thanks to all users who use our calculator!
+
+/* SITE */
+Last update: 2024/01/06
+Standards: HTML5, CSS3, JavaScript ES6
+Components: Vanilla JS, No frameworks
+Software: VS Code, Git
+
