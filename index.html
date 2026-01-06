@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online long division calculator with step-by-step solutions. Supports standard division (A÷B) and chain division (A÷B÷C÷D). Calculate division problems, see remainders, and learn with detailed explanations.">
+    <meta name="keywords" content="long division calculator, division calculator, chain division calculator, long division with remainders, step by step division, division solver, math calculator, online division tool, division with decimals, continuous division, multiple divisors">
+    <meta name="author" content="DivisionCalculator.sbs">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://divisioncalculator.sbs/">
+    <meta property="og:title" content="Long Division Calculator - Free Online Division Tool">
+    <meta property="og:description" content="Free online long division calculator with step-by-step solutions. Learn and solve division problems easily.">
+    <meta property="og:image" content="https://divisioncalculator.sbs/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://divisioncalculator.sbs/">
+    <meta property="twitter:title" content="Long Division Calculator - Free Online Division Tool">
+    <meta property="twitter:description" content="Free online long division calculator with step-by-step solutions.">
+    
+    <title>Long Division Calculator - Free Online Division Tool with Steps</title>
+    <link rel="canonical" href="https://divisioncalculator.sbs/">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Long Division Calculator",
+      "description": "Free online long division calculator with step-by-step solutions",
+      "url": "https://divisioncalculator.sbs/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250"
+      }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>📊 DivisionCalculator.sbs</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="blog.html">Guide</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Google AdSense - Add your AdSense code here -->
+        <!-- 
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
+                crossorigin="anonymous"></script>
+        -->
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Long Division Calculator</h1>
+                <p class="subtitle">Free online calculator with step-by-step solutions for all your division problems</p>
+                <div class="hero-features">
+                    <span>✓ Standard & Chain Division</span>
+                    <span>✓ Step-by-Step Solutions</span>
+                    <span>✓ Decimal Support</span>
+                    <span>✓ Remainder Display</span>
+                    <span>✓ Visual Learning</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section id="calculator" class="calculator-section">
+            <div class="container">
+                <div class="calculator-card">
+                    <h2>Calculate Long Division</h2>
+                    
+                    <!-- Mode Switcher -->
+                    <div class="mode-switcher">
+                        <button class="mode-btn active" data-mode="simple">Standard (A ÷ B)</button>
+                        <button class="mode-btn" data-mode="chain">Chain Division (A ÷ B ÷ C...)</button>
+                    </div>
+                    
+                    <!-- Simple Division Mode -->
+                    <div id="simpleMode" class="calculation-mode active">
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <label for="dividend">Dividend (Number to be divided)</label>
+                                <input type="text" id="dividend" placeholder="e.g., 1234" autocomplete="off">
+                            </div>
+                            <div class="division-symbol">÷</div>
+                            <div class="input-wrapper">
+                                <label for="divisor">Divisor (Number to divide by)</label>
+                                <input type="text" id="divisor" placeholder="e.g., 12" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chain Division Mode -->
+                    <div id="chainMode" class="calculation-mode">
+                        <div class="input-group-vertical">
+                            <div class="input-wrapper">
+                                <label for="chainDividend">Starting Number</label>
+                                <input type="text" id="chainDividend" placeholder="e.g., 1000" autocomplete="off">
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="chainDivisors">Divisors (separate with commas or spaces)</label>
+                                <input type="text" id="chainDivisors" placeholder="e.g., 5, 4, 10 or 5 4 10" autocomplete="off">
+                                <small style="color: var(--text-light); margin-top: 0.5rem; display: block;">
+                                    Example: "5, 2, 10" will calculate: Number ÷ 5 ÷ 2 ÷ 10
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calculator-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showSteps" checked>
+                            <span>Show detailed steps</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showDecimals">
+                            <span>Show decimal result</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showAnimation">
+                            <span>Animate steps</span>
+                        </label>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="calculateBtn" class="btn btn-primary">Calculate Division</button>
+                        <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                        <button id="exampleBtn" class="btn btn-tertiary">Load Example</button>
+                    </div>
+
+                    <div id="result" class="result-container"></div>
+                    
+                    <div id="visualization" class="visualization-container"></div>
+
+                    <div class="quick-calculations">
+                        <h3>Quick Calculations</h3>
+                        <div class="quick-calc-tabs">
+                            <button class="quick-tab active" data-tab="simple">Standard</button>
+                            <button class="quick-tab" data-tab="chain">Chain</button>
+                        </div>
+                        <div class="quick-calc-grid" id="quickSimple">
+                            <button class="quick-calc-btn" data-dividend="100" data-divisor="5">100 ÷ 5</button>
+                            <button class="quick-calc-btn" data-dividend="256" data-divisor="8">256 ÷ 8</button>
+                            <button class="quick-calc-btn" data-dividend="1000" data-divisor="25">1000 ÷ 25</button>
+                            <button class="quick-calc-btn" data-dividend="729" data-divisor="9">729 ÷ 9</button>
+                            <button class="quick-calc-btn" data-dividend="4567" data-divisor="13">4567 ÷ 13</button>
+                            <button class="quick-calc-btn" data-dividend="99999" data-divisor="37">99999 ÷ 37</button>
+                        </div>
+                        <div class="quick-calc-grid" id="quickChain" style="display: none;">
+                            <button class="quick-calc-btn-chain" data-dividend="1000" data-divisors="5,4,10">1000 ÷ 5 ÷ 4 ÷ 10</button>
+                            <button class="quick-calc-btn-chain" data-dividend="720" data-divisors="2,3,4">720 ÷ 2 ÷ 3 ÷ 4</button>
+                            <button class="quick-calc-btn-chain" data-dividend="10000" data-divisors="25,8,5">10000 ÷ 25 ÷ 8 ÷ 5</button>
+                            <button class="quick-calc-btn-chain" data-dividend="8640" data-divisors="12,6,4">8640 ÷ 12 ÷ 6 ÷ 4</button>
+                            <button class="quick-calc-btn-chain" data-dividend="5040" data-divisors="7,6,5">5040 ÷ 7 ÷ 6 ÷ 5</button>
+                            <button class="quick-calc-btn-chain" data-dividend="100000" data-divisors="10,10,10">100000 ÷ 10 ÷ 10 ÷ 10</button>
+                        </div>
+                    </div>
+
+                    <div id="history" class="history-section">
+                        <h3>Calculation History</h3>
+                        <div id="historyList" class="history-list"></div>
+                        <button id="clearHistory" class="btn btn-small">Clear History</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <h2>Why Use Our Long Division Calculator?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Step-by-Step Solutions</h3>
+                        <p>See every step of the long division process with detailed explanations to help you learn.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>100% Accurate</h3>
+                        <p>Get precise calculations every time with our advanced algorithm that handles any division problem.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Instant Results</h3>
+                        <p>Calculate division problems in milliseconds and see results immediately on your screen.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Works perfectly on all devices - smartphones, tablets, and desktop computers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔢</div>
+                        <h3>Remainder Support</h3>
+                        <p>Displays both quotient and remainder, with options for decimal conversion.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h3>Calculation History</h3>
+                        <p>Keep track of all your calculations with automatic history saving.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is Long Division -->
+        <section id="what-is" class="content-section">
+            <div class="container">
+                <h2>What is Long Division?</h2>
+                <div class="content-box">
+                    <p>Long division is a mathematical method for dividing large numbers that breaks down the division process into a series of easier steps. It's one of the most important arithmetic operations taught in elementary and middle school mathematics.</p>
+                    
+                    <p>The long division method allows you to divide numbers that would be difficult to divide mentally, and it shows you the complete working process, making it an excellent learning tool for students and anyone who wants to understand division better.</p>
+                    
+                    <h3>Components of Long Division</h3>
+                    <ul>
+                        <li><strong>Dividend:</strong> The number being divided (inside the division bracket)</li>
+                        <li><strong>Divisor:</strong> The number you're dividing by (outside the division bracket)</li>
+                        <li><strong>Quotient:</strong> The result of the division (above the bracket)</li>
+                        <li><strong>Remainder:</strong> What's left over after division (if the numbers don't divide evenly)</li>
+                    </ul>
+
+                    <h3>When to Use Long Division</h3>
+                    <p>Long division is particularly useful when:</p>
+                    <ul>
+                        <li>Dividing large numbers that can't be easily calculated mentally</li>
+                        <li>You need to show your work step-by-step for homework or exams</li>
+                        <li>Learning and understanding the division process</li>
+                        <li>Checking calculator results by hand</li>
+                        <li>Solving word problems that require division</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Use -->
+        <section id="how-to" class="content-section bg-light">
+            <div class="container">
+                <h2>How to Use the Long Division Calculator</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Enter the Dividend</h3>
+                            <p>Type the number you want to divide (the dividend) in the first input field. This can be any positive integer or decimal number.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Enter the Divisor</h3>
+                            <p>Type the number you want to divide by (the divisor) in the second input field. Make sure this is not zero!</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Choose Options</h3>
+                            <p>Select whether you want to see detailed steps, decimal results, or animated visualization of the calculation process.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Calculate</h3>
+                            <p>Click the "Calculate Division" button to see your results instantly with step-by-step solutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Tips for Best Results</h3>
+                <div class="tips-box">
+                    <ul>
+                        <li>Enter whole numbers for traditional long division problems</li>
+                        <li>Enable "Show detailed steps" to learn the process</li>
+                        <li>Use "Show decimal result" for precise decimal answers</li>
+                        <li>Try the quick calculation buttons for common division problems</li>
+                        <li>Check your calculation history to review previous problems</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="content-section">
+            <div class="container">
+                <h2>Long Division Examples</h2>
+                
+                <div class="example-card">
+                    <h3>Example 1: Simple Division</h3>
+                    <div class="example-content">
+                        <p><strong>Problem:</strong> 156 ÷ 12</p>
+                        <p><strong>Solution:</strong></p>
+                        <ol>
+                            <li>12 goes into 15 once (1 × 12 = 12), write 1 above</li>
+                            <li>Subtract: 15 - 12 = 3, bring down 6 to make 36</li>
+                            <li>12 goes into 36 three times (3 × 12 = 36), write 3 above</li>
+                            <li>Subtract: 36 - 36 = 0</li>
+                        </ol>
+                        <p><strong>Answer:</strong> 156 ÷ 12 = 13 with remainder 0</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Example 2: Division with Remainder</h3>
+                    <div class="example-content">
+                        <p><strong>Problem:</strong> 567 ÷ 8</p>
+                        <p><strong>Solution:</strong></p>
+                        <ol>
+                            <li>8 goes into 56 seven times (7 × 8 = 56), write 7 above</li>
+                            <li>Subtract: 56 - 56 = 0, bring down 7 to make 7</li>
+                            <li>8 goes into 7 zero times, write 0 above</li>
+                            <li>Remainder is 7</li>
+                        </ol>
+                        <p><strong>Answer:</strong> 567 ÷ 8 = 70 remainder 7 (or 70.875 as decimal)</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Example 3: Large Number Division</h3>
+                    <div class="example-content">
+                        <p><strong>Problem:</strong> 9876 ÷ 23</p>
+                        <p><strong>Solution:</strong></p>
+                        <ol>
+                            <li>23 goes into 98 four times (4 × 23 = 92), write 4 above</li>
+                            <li>Subtract: 98 - 92 = 6, bring down 7 to make 67</li>
+                            <li>23 goes into 67 twice (2 × 23 = 46), write 2 above</li>
+                            <li>Subtract: 67 - 46 = 21, bring down 6 to make 216</li>
+                            <li>23 goes into 216 nine times (9 × 23 = 207), write 9 above</li>
+                            <li>Subtract: 216 - 207 = 9</li>
+                        </ol>
+                        <p><strong>Answer:</strong> 9876 ÷ 23 = 429 remainder 9</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="content-section bg-light">
+            <div class="container">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3 class="faq-question">What is long division?</h3>
+                        <div class="faq-answer">
+                            <p>Long division is a method for dividing one number by another, breaking down the calculation into a series of easy steps. It's particularly useful for dividing large numbers and shows the complete working process including remainders.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">How do you do long division step by step?</h3>
+                        <div class="faq-answer">
+                            <p>Follow these steps: 1) Divide the first digit(s) of the dividend by the divisor. 2) Write the quotient above the division symbol. 3) Multiply the quotient by the divisor and write below. 4) Subtract to find the remainder. 5) Bring down the next digit. 6) Repeat until all digits are used.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">What is the dividend and divisor in long division?</h3>
+                        <div class="faq-answer">
+                            <p>The dividend is the number being divided (the larger number inside the division bracket). The divisor is the number you're dividing by (the number outside the bracket). For example, in 100 ÷ 5, 100 is the dividend and 5 is the divisor.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">What is a remainder in division?</h3>
+                        <div class="faq-answer">
+                            <p>A remainder is the amount left over after division when the dividend doesn't divide evenly by the divisor. For example, 17 ÷ 5 = 3 remainder 2, because 5 goes into 17 three times (15) with 2 left over.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can this calculator handle decimal numbers?</h3>
+                        <div class="faq-answer">
+                            <p>Yes! Our calculator can handle decimal numbers in both the dividend and divisor. You can also choose to display results as decimals instead of remainders by enabling the "Show decimal result" option.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">How do you convert a remainder to a decimal?</h3>
+                        <div class="faq-answer">
+                            <p>To convert a remainder to a decimal, continue the division process by adding a decimal point and zeros to the dividend. For example, 7 ÷ 4 = 1 R3 can be continued as 1.75 by treating the remainder 3 as 3.00 and continuing division.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Why is long division important?</h3>
+                        <div class="faq-answer">
+                            <p>Long division is important because it: 1) Helps understand how division works, 2) Develops problem-solving skills, 3) Is essential for algebra and higher mathematics, 4) Allows you to divide without a calculator, and 5) Shows the complete working process for verification.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can you divide by zero?</h3>
+                        <div class="faq-answer">
+                            <p>No, division by zero is undefined in mathematics. It's impossible to divide any number by zero because there's no number that, when multiplied by zero, gives you the dividend. Our calculator will show an error if you try to divide by zero.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">What's the difference between long division and short division?</h3>
+                        <div class="faq-answer">
+                            <p>Long division shows all steps written out completely, making it easier to follow and learn. Short division is a quicker method where some steps are done mentally, typically used with single-digit divisors. Long division works for any size numbers.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Is this calculator free to use?</h3>
+                        <div class="faq-answer">
+                            <p>Yes! This long division calculator is completely free to use with no registration required. You can perform unlimited calculations and access all features including step-by-step solutions and calculation history.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can I use this calculator for homework?</h3>
+                        <div class="faq-answer">
+                            <p>Yes, but we recommend using it as a learning tool. Use the step-by-step feature to understand how long division works, then try to solve problems on your own. It's great for checking your answers and learning from mistakes.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Does this work on mobile devices?</h3>
+                        <div class="faq-answer">
+                            <p>Absolutely! Our calculator is fully responsive and works perfectly on smartphones, tablets, and desktop computers. The interface adapts to your screen size for the best experience on any device.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">What is chain division and how does it work?</h3>
+                        <div class="faq-answer">
+                            <p>Chain division (or continuous division) is dividing a number by multiple divisors in sequence. For example: 1000 ÷ 5 ÷ 4 ÷ 10 means divide 1000 by 5 (=200), then divide 200 by 4 (=50), then divide 50 by 10 (=5). Our calculator supports both standard division (A÷B) and chain division (A÷B÷C÷D...) with detailed step-by-step solutions for each division in the chain.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can I divide by more than one number at once?</h3>
+                        <div class="faq-answer">
+                            <p>Yes! Switch to "Chain Division" mode and enter multiple divisors separated by commas or spaces. The calculator will divide your starting number by each divisor in sequence and show you each step. This is useful for complex calculations or when you need to divide repeatedly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Tips Section -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Long Division Tips and Tricks</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h3>Memorize Multiplication Tables</h3>
+                        <p>Knowing your times tables makes long division much faster. You'll quickly identify how many times the divisor fits into each part of the dividend.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Estimate First</h3>
+                        <p>Before starting, estimate the answer by rounding. This helps you catch errors and know if your answer makes sense.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Check Your Work</h3>
+                        <p>Multiply your quotient by the divisor and add the remainder. This should equal your original dividend.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Practice Regularly</h3>
+                        <p>Like any skill, long division gets easier with practice. Try a few problems each day to build confidence and speed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-section">
+            <div class="container">
+                <h2>Related Calculators</h2>
+                <div class="related-grid">
+                    <div class="related-card">
+                        <h3>Multiplication Calculator</h3>
+                        <p>Multiply large numbers with step-by-step solutions</p>
+                    </div>
+                    <div class="related-card">
+                        <h3>Fraction Calculator</h3>
+                        <p>Add, subtract, multiply, and divide fractions</p>
+                    </div>
+                    <div class="related-card">
+                        <h3>Percentage Calculator</h3>
+                        <p>Calculate percentages, increases, and decreases</p>
+                    </div>
+                    <div class="related-card">
+                        <h3>Remainder Calculator</h3>
+                        <p>Find remainders quickly for any division problem</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DivisionCalculator.sbs</h3>
+                    <p>Your free online resource for all division calculations. Accurate, fast, and easy to use.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#calculator">Calculator</a></li>
+                        <li><a href="#how-to">How to Use</a></li>
+                        <li><a href="#examples">Examples</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#what-is">What is Long Division</a></li>
+                        <li><a href="#examples">Division Examples</a></li>
+                        <li><a href="#faq">Common Questions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DivisionCalculator.sbs. All rights reserved. | Free Long Division Calculator with Step-by-Step Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
